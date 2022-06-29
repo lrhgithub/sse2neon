@@ -1242,6 +1242,19 @@ FORCE_INLINE __m128i _mm_max_epi16(__m128i a, __m128i b)
 	return vreinterpretq_m128i_s16(vmaxq_s16(vreinterpretq_s16_m128i(a), vreinterpretq_s16_m128i(b)));
 }
 
+// Computes the pairwise minima of the 8 unsigned 16-bit integers from a and the 8 usigned 16-bit integers from b. https://msdn.microsoft.com/en-us/library/vstudio/bb514101(v=vs.100).aspx
+FORCE_INLINE __m128i _mm_min_epu16(__m128i a, __m128i b)
+{
+    return vreinterpretq_m128i_u16(vminq_u16(vreinterpretq_u16_m128i(a), vreinterpretq_u16_m128i(b)));
+}
+
+//added by hasindu
+//Computes the pairwise maxima of the 8 unsigned 16-bit integers from a and the 8 usigned 16-bit integers from b. https://msdn.microsoft.com/en-us/library/vstudio/bb514087(v=vs.100).aspx
+FORCE_INLINE __m128i _mm_max_epu16(__m128i a, __m128i b)
+{
+    return vreinterpretq_m128i_u16(vmaxq_u16(vreinterpretq_u16_m128i(a), vreinterpretq_u16_m128i(b)));
+}
+
 
 // epi versions of min/max
 // Computes the pariwise maximums of the four signed 32-bit integer values of a and b. https://msdn.microsoft.com/en-us/library/vstudio/bb514055(v=vs.100).aspx
@@ -1359,6 +1372,10 @@ FORCE_INLINE __m128i _mm_cmpgt_epi16 (__m128i a, __m128i b)
 	return vreinterpretq_m128i_u16(vcgtq_s16(vreinterpretq_s16_m128i(a), vreinterpretq_s16_m128i(b)));
 }
 
+FORCE_INLINE __m128i _mm_cmplt_epi16(__m128i a, __m128i b)
+{
+    return vreinterpretq_m128i_u16(vcltq_s16(vreinterpretq_s16_m128i(a), vreinterpretq_s16_m128i(b)));
+}
 
 // Compares the 4 signed 32-bit integers in a and the 4 signed 32-bit integers in b for less than. https://msdn.microsoft.com/en-us/library/vstudio/4ak0bf5d(v=vs.100).aspx
 FORCE_INLINE __m128i _mm_cmplt_epi32(__m128i a, __m128i b)
